@@ -16,15 +16,28 @@ export class Config {
     }
 
     private constructor(options: ConfigOptions) {
-        this.staticRootDirectory = Config._getStaticRootDirectory(options.rootScriptDirname, options.rootScriptFilename);
+        this.staticRootDirectory = Config._getStaticRootDirectory(
+            options.rootScriptDirname,
+            options.rootScriptFilename,
+        );
     }
 
-    private static _getStaticRootDirectory(rootScriptDirname: string, rootScriptFilename: string) {
-        return path.resolve(rootScriptDirname, '../../static', Config._getFilename(rootScriptFilename));
+    private static _getStaticRootDirectory(
+        rootScriptDirname: string,
+        rootScriptFilename: string,
+    ) {
+        return path.resolve(
+            rootScriptDirname,
+            '../../static',
+            Config._getFilename(rootScriptFilename),
+        );
     }
 
     private static _getFilename(rootScriptFilename: string) {
-        return path.basename(rootScriptFilename, path.extname(rootScriptFilename));
+        return path.basename(
+            rootScriptFilename,
+            path.extname(rootScriptFilename),
+        );
     }
 
     public static configure(options: ConfigOptions): void {
