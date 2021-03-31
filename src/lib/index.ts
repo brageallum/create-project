@@ -1,3 +1,4 @@
 export * from './Config';
-export * from './copy';
-export * from './exec';
+export * from './commands/copy';
+export * from './commands/exec';
+export * from './commands/write';
