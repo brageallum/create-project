@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "@babel/typescript"
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread",
+    "@babel/plugin-syntax-top-level-await",
+    "@babel/plugin-transform-modules-commonjs",
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "@lib": "./src/lib/index.js"
+      }
+    }]
+  ]
+}

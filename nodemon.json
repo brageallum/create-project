@@ -1,6 +1,9 @@
 {
   "watch": [
-    "src"
+    "src",
+    "tsconfig.json",
+    "package.json",
+    ".babelrc"
   ],
   "ext": ".ts,.js",
   "ignore": [],

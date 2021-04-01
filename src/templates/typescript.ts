@@ -11,5 +11,5 @@ const gitignore = `
 
 copy('.');
 await exec('npm init -y');
-exec('npm install --save-dev typescript @types/node');
+void exec('npm install --save-dev typescript @types/node');
 write('.gitignore', gitignore);
