@@ -1,8 +1,5 @@
-import path from 'path';
-
-interface ConfigOptions {
-    rootScriptDirname: string;
-    rootScriptFilename: string;
+export interface ConfigOptions {
+    staticRootDirectory: string;
 }
 
 export class Config {
@@ -16,28 +13,7 @@ export class Config {
     }
 
     private constructor(options: ConfigOptions) {
-        this.staticRootDirectory = Config._getStaticRootDirectory(
-            options.rootScriptDirname,
-            options.rootScriptFilename,
-        );
-    }
-
-    private static _getStaticRootDirectory(
-        rootScriptDirname: string,
-        rootScriptFilename: string,
-    ) {
-        return path.resolve(
-            rootScriptDirname,
-            '../../static',
-            Config._getFilename(rootScriptFilename),
-        );
-    }
-
-    private static _getFilename(rootScriptFilename: string) {
-        return path.basename(
-            rootScriptFilename,
-            path.extname(rootScriptFilename),
-        );
+        this.staticRootDirectory = options.staticRootDirectory;
     }
 
     public static configure(options: ConfigOptions): void {

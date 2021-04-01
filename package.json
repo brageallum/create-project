@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A tool for quickly setting up the base of projects using templates.",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "lib": "src"
   },
@@ -24,13 +25,13 @@
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
     "@babel/plugin-syntax-top-level-await": "^7.12.13",
-    "@babel/plugin-transform-modules-commonjs": "^7.13.8",
     "@babel/preset-typescript": "^7.13.0",
     "@types/fs-extra": "^9.0.9",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.37",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
+    "babel-plugin-add-import-extension": "^1.5.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^8.1.0",
