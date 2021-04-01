@@ -1,11 +1,14 @@
 {
-  "name": "project-templates",
+  "name": "create-project",
   "version": "1.0.0",
   "description": "A tool for quickly setting up the base of projects using templates.",
   "main": "index.js",
   "type": "module",
   "directories": {
     "lib": "src"
+  },
+  "bin": {
+    "create-project": "cli.js"
   },
   "scripts": {
     "build": "rimraf ./out && tsc && babel src --extensions '.ts' --out-dir out",

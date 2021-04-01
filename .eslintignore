@@ -2,3 +2,4 @@
 /static
 .eslintrc.js
 jest.config.js
+cli.js
