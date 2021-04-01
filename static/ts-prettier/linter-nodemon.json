@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "src",
+    ".eslintrc.js",
+    "package.json",
+    ".prettierrc.json"
+  ],
+  "ext": ".ts,.js",
+  "ignore": [],
+  "exec": "npm run lint"
+}
