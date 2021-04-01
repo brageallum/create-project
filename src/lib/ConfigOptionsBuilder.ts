@@ -4,16 +4,22 @@ import { ConfigOptions } from './Config';
 
 export class ConfigOptionsBuilder {
     public staticRootDirectory?: string;
+    public templateName?: string;
 
     public build(): ConfigOptions {
-        if (undefined === this.staticRootDirectory) {
-            throw new Error('Missing required property staticRootDirectory.')
-        }
+        this.assertProperty('staticRootDirectory');
+        this.assertProperty('templateName');
 
         return <ConfigOptions>this;
     }
 
-    public staticRootDirectoryFromImportMetaUrl(importMetaUrl: string): ConfigOptionsBuilder {
+    private assertProperty(key: string): void {
+        if (!(key in this)) {
+            throw new Error(`Missing required property ${key}.`)
+        }
+    }
+
+    public fromImportMetaUrl(importMetaUrl: string): ConfigOptionsBuilder {
         const completePath = fileURLToPath(importMetaUrl);
         const directoryName = path.dirname(completePath);
         const fileName = ConfigOptionsBuilder._getFilename(completePath);
@@ -22,6 +28,8 @@ export class ConfigOptionsBuilder {
             directoryName,
             fileName,
         );
+
+        this.templateName = fileName;
 
         return this;
     }

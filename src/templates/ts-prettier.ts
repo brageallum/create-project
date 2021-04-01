@@ -1,19 +1,19 @@
 #!/usr/bin/env node
-import { Config, ConfigOptionsBuilder, copy, Dependencies, exec, jsonedit } from '@lib';
+import { Config, ConfigOptionsBuilder, copy, Dependencies, exec, jsonedit, log } from '@lib';
 
 await Dependencies.require('typescript');
 
-console.log('[ts-prettier] Setting up prettier for typescript..');
-
 Config.configure(
     new ConfigOptionsBuilder()
-        .staticRootDirectoryFromImportMetaUrl(import.meta.url)
+        .fromImportMetaUrl(import.meta.url)
         .build()
 );
 
-console.log('[ts-prettier] Copying configuration files..');
+log('Setting up prettier for typescript..');
+
+log('Copying configuration files..');
 copy('.');
-console.log('[ts-prettier] Installing development packages..');
+log('Installing development packages..');
 await exec(
     'npm install --save-dev eslint ' +
     '@typescript-eslint/eslint-plugin ' +
@@ -23,7 +23,7 @@ await exec(
     'eslint-plugin-prettier'
 );
 
-console.log('[ts-prettier] Adding linter scripts to package.json..');
+log('Adding linter scripts to package.json..');
 jsonedit('package.json', 'scripts.lint', 'eslint \"**/*.{js,ts}\"')
 jsonedit('package.json', ['scripts', 'lint:watch'], 'nodemon --config linter-nodemon.json')
 jsonedit('package.json', 'scripts.lint', 'npm run lint -- --fix')
