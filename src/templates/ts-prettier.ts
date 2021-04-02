@@ -1,13 +1,6 @@
-#!/usr/bin/env node
-import { Config, ConfigOptionsBuilder, copy, Dependencies, exec, jsonedit, log } from '@lib';
+import { copy, Dependencies, exec, jsonedit, log } from '@lib';
 
 await Dependencies.require('typescript');
-
-Config.configure(
-    new ConfigOptionsBuilder()
-        .fromImportMetaUrl(import.meta.url)
-        .build()
-);
 
 log('Setting up prettier for typescript..');
 

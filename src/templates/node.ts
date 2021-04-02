@@ -1,11 +1,4 @@
-#!/usr/bin/env node
-import { Config, ConfigOptionsBuilder, copy, exec, exists, jsonedit, log, write } from '@lib';
-
-Config.configure(
-    new ConfigOptionsBuilder()
-        .fromImportMetaUrl(import.meta.url)
-        .build()
-)
+import { copy, exec, exists, jsonedit, log, write } from '@lib';
 
 log('Setting up node project..');
 

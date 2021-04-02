@@ -1,13 +1,6 @@
-#!/usr/bin/env node
-import { Config, ConfigOptionsBuilder, copy, Dependencies, exec, jsonedit, log, write } from '@lib';
+import { copy, Dependencies, exec, jsonedit, log, write } from '@lib';
 
 await Dependencies.require('node');
-
-Config.configure(
-    new ConfigOptionsBuilder()
-        .fromImportMetaUrl(import.meta.url)
-        .build()
-)
 
 log('Setting up typescript project..');
 
