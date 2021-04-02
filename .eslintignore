@@ -1,5 +1,5 @@
 /out
 /static
-.eslintrc.js
+.eslintrc.cjs
 jest.config.js
 cli.js

@@ -1,3 +1,3 @@
 describe('jsonedit', () => {
-    it('edits ')
+    it('edits ');
 });

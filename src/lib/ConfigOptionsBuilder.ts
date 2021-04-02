@@ -15,7 +15,7 @@ export class ConfigOptionsBuilder {
 
     private assertProperty(key: string): void {
         if (!(key in this)) {
-            throw new Error(`Missing required property ${key}.`)
+            throw new Error(`Missing required property ${key}.`);
         }
     }
 
@@ -38,18 +38,10 @@ export class ConfigOptionsBuilder {
         directoryName: string,
         fileName: string,
     ) {
-        return path.resolve(
-            directoryName,
-            '../../static',
-            fileName,
-        );
+        return path.resolve(directoryName, '../../static', fileName);
     }
 
     private static _getFilename(completePath: string) {
-        return path.basename(
-            completePath,
-            path.extname(completePath),
-        );
+        return path.basename(completePath, path.extname(completePath));
     }
-
 }

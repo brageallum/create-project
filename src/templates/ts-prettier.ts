@@ -9,14 +9,18 @@ copy('.');
 log('Installing development packages..');
 await exec(
     'npm install --save-dev eslint ' +
-    '@typescript-eslint/eslint-plugin ' +
-    '@typescript-eslint/parser ' +
-    'eslint-config-prettier ' +
-    'eslint-plugin-node ' +
-    'eslint-plugin-prettier'
+        '@typescript-eslint/eslint-plugin ' +
+        '@typescript-eslint/parser ' +
+        'eslint-config-prettier ' +
+        'eslint-plugin-node ' +
+        'eslint-plugin-prettier',
 );
 
 log('Adding linter scripts to package.json..');
-jsonedit('package.json', 'scripts.lint', 'eslint \"**/*.{js,ts}\"')
-jsonedit('package.json', ['scripts', 'lint:watch'], 'nodemon --config linter-nodemon.json')
-jsonedit('package.json', 'scripts.lint', 'npm run lint -- --fix')
+jsonedit('package.json', 'scripts.lint', 'eslint "**/*.{js,ts}"');
+jsonedit(
+    'package.json',
+    ['scripts', 'lint:watch'],
+    'nodemon --config linter-nodemon.json',
+);
+jsonedit('package.json', 'scripts.lint', 'npm run lint -- --fix');

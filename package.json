@@ -17,7 +17,7 @@
     "test:watch": "jest --watch",
     "check-types": "tsc",
     "lint": "eslint \"**/*.{js,ts}\"",
-    "lint:watch": "nodemon -w src -w .eslintrc.js -w .prettierrc.json -e .js,.ts -x \"npm run lint\"",
+    "lint:watch": "nodemon -w src -w .eslintrc.cjs -w .prettierrc.json -e .js,.ts -x \"npm run lint\"",
     "lint:fix": "npm run lint -- --fix"
   },
   "author": "",
