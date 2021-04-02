@@ -1,8 +1,8 @@
-import { copy, Dependencies, exec, jsonedit, log, write } from '@lib';
+import { copy, Templates, exec, jsonedit, log, write } from '@lib';
 
-await Dependencies.require('node');
+await Templates.require('node');
 
-log('Setting up typescript project..');
+log('Setting up a new typescript project..');
 
 const gitignore = `# Built files
 /out

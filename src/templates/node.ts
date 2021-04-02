@@ -1,6 +1,6 @@
 import { copy, exec, exists, jsonedit, log, write } from '@lib';
 
-log('Setting up node project..');
+log('Setting up a new node project..');
 
 const gitignore = `# Node files
 /node_modules

@@ -1,20 +1,18 @@
 #!/usr/bin/env node
-import { Dependencies } from './out/lib/index.js';
 import fs from 'fs';
-import path from 'path';
+import * as child_process from 'child_process';
 import { fileURLToPath } from 'url';
+import path from 'path';
 
 const completePath = fileURLToPath(import.meta.url);
-const directoryName = path.dirname(completePath);
+const directoryPath = path.dirname(completePath);
 
-const [,, ...args] = process.argv;
 
-if (0 === args.length) {
-    const files = fs.readdirSync(path.resolve(directoryName, 'out/templates'));
-    const templates = files.map(file => file.replace(/\.[^/.]+$/, ""))
-    console.log("Available templates:\n" + templates.join('\t'));
-    process.exit();
+const entrypoint = path.resolve(directoryPath, './out/cli/index.js');
+
+if (!fs.existsSync(entrypoint)) {
+    throw new Error('Project is not built, run "npm run build".');
 }
 
-await Dependencies.require(...args);
-console.log('Done.');
+const [,, ...args] = process.argv;
+child_process.fork(entrypoint, args);

@@ -1,6 +1,6 @@
-import { copy, Dependencies, exec, jsonedit, log } from '@lib';
+import { copy, Templates, exec, jsonedit, log } from '@lib';
 
-await Dependencies.require('typescript');
+await Templates.require('typescript');
 
 log('Setting up prettier for typescript..');
 

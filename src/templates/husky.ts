@@ -1,6 +1,6 @@
-import { Dependencies, exec, jsonedit, log } from '@lib';
+import { Templates, exec, jsonedit, log } from '@lib';
 
-await Dependencies.require('git', 'node');
+await Templates.require('git', 'node');
 
 log('Setting up husky..');
 
