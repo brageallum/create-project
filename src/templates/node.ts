@@ -1,4 +1,4 @@
-import { copy, exec, exists, jsonedit, log, write } from '@lib';
+import { copy, exec, exists, jsonedit, log, Templates, write } from '@lib';
 
 log('Setting up a new node project..');
 
@@ -13,10 +13,10 @@ log('Installing nodemon..');
 await exec('npm install --save-dev nodemon');
 
 log('Updating config files..');
-copy('.');
-jsonedit(
-    'package.json',
-    'scripts.start',
-    'echo "Error: no start script specified" && exit 1',
-);
+copy('nodemon.json');
 write('.gitignore', gitignore);
+
+if (!Templates.hasRequested('typescript')) {
+    copy('./src');
+    jsonedit('package.json', 'scripts.start', 'node src/index.js');
+}

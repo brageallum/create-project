@@ -36,12 +36,23 @@ export class Templates {
         });
     }
 
-    public static hasApplied(template: string): boolean {
-        return Persistence.readAppliedTemplates().includes(template);
+    private static addTemplateToAppliedTemplates(template: string): void {
+        const appliedTemplates = Persistence.appliedTemplatesRepository.readAppliedTemplates();
+        Persistence.appliedTemplatesRepository.saveAppliedTemplates([
+            ...appliedTemplates,
+            template,
+        ]);
     }
 
-    private static addTemplateToAppliedTemplates(template: string): void {
-        const appliedTemplates = Persistence.readAppliedTemplates();
-        Persistence.saveAppliedTemplates([...appliedTemplates, template]);
+    public static hasApplied(template: string): boolean {
+        return Persistence.appliedTemplatesRepository
+            .readAppliedTemplates()
+            .includes(template);
+    }
+
+    public static hasRequested(template: string): boolean {
+        return Persistence.requestedTemplatesRepository
+            .readRequestedTemplates()
+            .includes(template);
     }
 }

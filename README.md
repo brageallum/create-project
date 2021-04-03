@@ -14,7 +14,7 @@ npm link # Adds create-project as a global cli command
 create-project [templates to use]
 
 # Example:
-create-project ts-prettier husky # Creates a typescript project with prettier and husky
+create-project typescript prettier husky # Creates a typescript project with prettier and husky
 
 # Hint: Running create-project with no arguments will list all available templates
 ```
@@ -26,9 +26,17 @@ A template consists of two parts:
 2. (Optional) A folder in `static/` with the same name as the script, which contains static files used by the template's
    script.
    
-There are some utility commands available for templates, which live in the folder [src/lib/commands](src/lib/commands).
-
-Templates can use other templates through the `Templates.require()` method.
-
-Each template is run as its own process, which means all templates are isolated from each other, however
-some communication is done through persisting data in temporary files. 
+### Things to note:
+* Naming convention for templates:
+  * Template names should be written in `snake_case` (lowercase, with an underscore '_' replacing spaces).
+  * Sub templates should be named `[super_template]-[variety]`, where `super_template` and `variety`
+    are in `snake_case`. For example a template that installs prettier in a typescript project should be
+    named `prettier-typescript`. The `prettier` template is then responsible for deciding what sub template
+    should be applied based on context.
+  * Templates with names containing a hyphen '-' (meaning that they are sub templates) will be hidden when calling
+    `create-project` (with no parameters), as these are not meant to be called directly.
+* The utility commands available for templates, live in the folder [src/lib/commands](src/lib/commands). The relevant 
+    documentation should be in JSDoc comments above the commands. 
+* Templates can use other templates through the `Templates.require()` method.
+* Each template is run as its own process, which means all templates are isolated from each other, however
+    some cross-template communication is done through persisting data in temporary files.

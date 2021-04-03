@@ -1,5 +1,7 @@
 import * as fs from 'fs';
 import path from 'path';
+import { AppliedTemplatesRepository } from './repositories/AppliedTemplatesRepository';
+import { RequestedTemplatesRepository } from './repositories/RequestedTemplatesRepository';
 
 /**
  * A class for persisting data across templates. The persistence works by storing
@@ -11,24 +13,9 @@ export class Persistence {
         process.cwd(),
         '.create-project-tmp-files',
     );
-    private static APPLIED_TEMPLATES_FILE = path.resolve(
-        Persistence.BASE_DIRECTORY,
-        '.applied-templates',
-    );
 
-    public static saveAppliedTemplates(templates: string[]): void {
-        fs.writeFileSync(this.APPLIED_TEMPLATES_FILE, templates.join('\n'), {
-            encoding: 'utf-8',
-        });
-    }
-
-    public static readAppliedTemplates(): string[] {
-        if (!fs.existsSync(this.APPLIED_TEMPLATES_FILE)) return [];
-        const templates = fs.readFileSync(this.APPLIED_TEMPLATES_FILE, {
-            encoding: 'utf-8',
-        });
-        return templates.split('\n');
-    }
+    public static readonly appliedTemplatesRepository = new AppliedTemplatesRepository();
+    public static readonly requestedTemplatesRepository = new RequestedTemplatesRepository();
 
     public static cleanup(): void {
         fs.rmdirSync(this.BASE_DIRECTORY, {
