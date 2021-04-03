@@ -3,6 +3,10 @@ export interface ConfigOptions {
     templateName: string;
 }
 
+/**
+ * Some commands need to know some basic information about the script. This
+ * information is provided through the Config class.
+ */
 export class Config {
     private static _config?: Config;
 

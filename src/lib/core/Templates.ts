@@ -6,6 +6,11 @@ import { Persistence } from './Persistence';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+/**
+ * A Class that allows for requiring that other templates should be applied.
+ * If they already have been applied, nothing will be done. If the templates
+ * have not been applied they will be applied before anything else is ran.
+ */
 export class Templates {
     public static async require(...templates: string[]): Promise<void> {
         for (const template of templates) {

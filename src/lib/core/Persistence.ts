@@ -1,6 +1,11 @@
 import * as fs from 'fs';
 import path from 'path';
 
+/**
+ * A class for persisting data across templates. The persistence works by storing
+ * the data in temporary files, which are deleted when all templates have been ran
+ * and the new project is fully created.
+ */
 export class Persistence {
     public static BASE_DIRECTORY = path.resolve(
         process.cwd(),

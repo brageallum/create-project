@@ -1,6 +1,10 @@
 import * as fs from 'fs';
 import set from 'lodash.set';
 
+/**
+ * Edits an arbitrary json file by inserting a value at a given position in
+ * the json object. That position is defined by a path such as `path.to.property`.
+ */
 export function jsonedit(
     filePath: string,
     jsonPath: string | string[],

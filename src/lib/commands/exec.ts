@@ -1,5 +1,8 @@
 import { exec as executeCommand } from 'child_process';
 
+/**
+ * Executes an arbitrary command with the standard shell.
+ */
 export function exec(command: string): Promise<CommandOutput> {
     return new Promise<CommandOutput>((resolve, reject) => {
         executeCommand(command, (exception, stdout, stderr) => {
