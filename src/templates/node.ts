@@ -14,6 +14,7 @@ await exec('npm install --save-dev nodemon');
 
 log('Updating config files..');
 copy('nodemon.json');
+jsonedit('package.json', 'scripts.dev', 'nodemon');
 write('.gitignore', gitignore);
 
 if (!Templates.hasRequested('typescript')) {
